@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "description": "Local browser dependencies for the QR Logbook",
+  "dependencies": {
+    "jsqr": "1.4.0"
+  }
+}

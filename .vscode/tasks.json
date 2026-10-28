@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Serve QR Logbook",
+            "type": "process",
+            "command": "python",
+            "args": [
+                "-m",
+                "http.server",
+                "8080",
+                "--bind",
+                "127.0.0.1",
+                "--directory",
+                "${workspaceFolder}"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "qr-logbook-server",
+                "pattern": {
+                    "regexp": "^$"
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "Serving HTTP on",
+                    "endsPattern": "Serving HTTP on"
+                }
+            }
+        }
+    ]
+}

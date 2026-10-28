@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Logbook System</title>
+  <meta name="theme-color" content="#352d67">
+  <title>High School for Service and Learning</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="350x280" href="./7057_1566490658_9825_-removebg-preview.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -157,7 +160,16 @@
   </div>
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="./vendor/qrcode.min.js"></script>
+  <script src="./vendor/jsQR.js"></script>
   <script src="script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+          .catch(error => console.error("Service worker registration failed:", error));
+      });
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,17 @@
+{
+  "name": "High School for Service and Learning",
+  "short_name": "HSS&L Logbook",
+  "description": "QR attendance logbook for High School for Service and Learning.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f3fb",
+  "theme_color": "#352d67",
+  "icons": [
+    {
+      "src": "./Classe365_qrcode-removebg-preview.png",
+      "sizes": "200x200",
+      "type": "image/png"
+    }
+  ]
+}

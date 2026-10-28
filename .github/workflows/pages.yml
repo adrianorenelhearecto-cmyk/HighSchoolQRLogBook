@@ -1,0 +1,46 @@
+name: Deploy QR Logbook to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    timeout-minutes: 10
+    environment: github-pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Verify static site files
+        run: |
+          test -f index.html
+          test -f style.css
+          test -f script.js
+          test -f manifest.webmanifest
+          test -f service-worker.js
+          test -f "7057_1566490658_9825_-removebg-preview.png"
+          test -f "Classe365_qrcode-removebg-preview.png"
+          test -f "Gemini_Generated_Image_aklx79aklx79aklx.png"
+          test -f "Assets/_Image_c53utdc53utdc53u.jpg"
+          test -f vendor/qrcode.min.js
+          test -f vendor/jsQR.js
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload website files
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4
